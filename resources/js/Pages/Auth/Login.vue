@@ -20,22 +20,20 @@
                     </div>
                 </div>
 
-                <form class="" @submit.prevent="form.post('/login')">
+                <div class="" >
                     <div class="text-gray-500 text-sm">
                         Sign in with your
                         <span class="text-indigo-600"> Twitch account</span>
                     </div>
-                    <div class="input-group">
+                    <a :href="route('auth.twitch')">
                         <PrimaryButton
-                            type="submit"
                             primary
-                            :loading="form.processing"
                             class="mt-4 w-full"
                         >
                             Login
                         </PrimaryButton>
-                    </div>
-                </form>
+                    </a>
+                </div>
             </div>
             <figure class="hidden md:block w-3/5 aspect-w-4 aspect-h-2">
                 <img

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('streams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('twitch_id')->unique();
-            $table->string('email')->nullable();
-            $table->string('token')->nullable();
-            $table->string('profile_image_url')->nullable();
-
+            $table->unsignedBigInteger('twitch_stream_id');
+            $table->unsignedBigInteger('game_id')->index();
+            $table->string('game_name')->index();
+            $table->string('title');
+            $table->unsignedBigInteger('viewer_count');
+            $table->dateTime('started_at');
+            $table->json('tag_ids');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('streams');
     }
 };

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\StreamController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,6 +15,13 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(LoginController::class)->middleware('guest')->group(function () {
+    Route::get('/login', 'index')->name('auth.login');
+    Route::get('/login/twitch', 'twitch')->name('auth.twitch');
+    Route::get('/login/twitch/redirect', 'twitchRedirect')->name('auth.twitch.redirect');
+    Route::post('/logout', 'logout')->name('auth.logout');
+});
 
-//Route::get('/', fn () => Inertia::render('Home'))->name('home');
-Route::get('/', fn () => Inertia::render('Auth/Login'))->name('auth.login');
+Route::middleware('auth:web')->group(function () {
+    Route::get('/', [StreamController::class, 'sharedTags'])->name('home');
+});

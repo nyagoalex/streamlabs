@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,15 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('followed_streams', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('twitch_id')->unique();
-            $table->string('email')->nullable();
-            $table->string('token')->nullable();
-            $table->string('profile_image_url')->nullable();
-
+            $table->foreignIdFor(User::class);
+            $table->unsignedBigInteger('twitch_stream_id');
+            $table->unsignedBigInteger('viewer_count');
+            $table->json('tag_ids');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('followed_streams');
     }
 };

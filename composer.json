@@ -6,11 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "bilfeldt/laravel-http-client-logger": "^1.2",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "socialiteproviders/twitch": "^5.3",
         "spatie/laravel-query-builder": "^5.0",
         "tightenco/ziggy": "^1.4"
     },
