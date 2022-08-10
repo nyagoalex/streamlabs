@@ -5,9 +5,6 @@ namespace App\Actions;
 
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\StreamController;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -47,7 +44,7 @@ class StreamsFollowedAction
         return $this->streams->pluck('id');
     }
 
-    public function leastViewedStream(): Array | null
+    public function leastViewedStream(): array|null
     {
         return $this->streams->sortBy('viewer_count')->first();
     }

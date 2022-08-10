@@ -15,6 +15,7 @@ class RefreshStreamsTableAction
 
         $streams = $repo->getpreparedStreams();
 
+        Stream::truncate();
         Stream::insert($streams->shuffle()->all());
     }
 }

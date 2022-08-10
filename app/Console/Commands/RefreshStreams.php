@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Actions\FetchTopStreams;
+use App\Actions\RefreshStreamsTableAction;
 use App\Models\Stream;
 use Illuminate\Console\Command;
 
