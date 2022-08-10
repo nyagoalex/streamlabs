@@ -4,7 +4,7 @@ import DefaultLayout from '@layouts/Default'
 import { InertiaProgress } from '@inertiajs/progress'
 
 InertiaProgress.init({
-    color: '#FF671B',
+    color: 'rgb(22 163 74)',
     showSpinner: true,
 })
 

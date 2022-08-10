@@ -23,5 +23,5 @@ Route::controller(LoginController::class)->middleware('guest')->group(function (
 });
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/', [StreamController::class, 'sharedTags'])->name('home');
+    Route::get('/', [StreamController::class, 'index'])->name('home');
 });

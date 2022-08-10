@@ -4,7 +4,10 @@
 namespace App\Actions;
 
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\StreamController;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -67,10 +70,10 @@ class StreamsFollowedAction
             ->withHeaders(['Client-Id' => config('services.twitch.client_id')])
             ->get('https://api.twitch.tv/helix/streams/followed', $param);
 
+        $response->onError(function () {
+            (new LoginController())->logout(Request());
+        });
 
-        if ($response->failed()) {
-            $response->throw();
-        }
         return $response->json();
     }
 
