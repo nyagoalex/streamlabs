@@ -22,8 +22,8 @@
 
                                 <td class=" py-2 pl-4 text-sm font-medium text-gray-600 sm:pl-6 lg:pl-12 border-b border-gray-200">
                                     {{index + 1}}</td>
-                                <td class="py-2 pl-2 pr-2 text-sm font-medium text-gray-600 sm:pl-6 lg:pl-8 border-b border-gray-200"> <span class=' '>{{ title }}</span></td>
-                                <td class=" px-3 py-2 text-sm text-gray-500 hidden sm:table-cell border-b border-gray-200">{{ viewer_count }}</td>
+                                <td class="py-2 pl-2 pr-2 text-sm font-medium text-gray-600 sm:pl-6 lg:pl-8 border-b border-gray-200"> <div class='w-80 '>{{ title }}</div></td>
+                                <td class=" px-3 py-2 text-sm text-gray-500  border-b border-gray-200">{{ viewer_count }}</td>
 
                             </tr>
                             </tbody>

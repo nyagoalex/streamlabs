@@ -15,11 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('streams:refresh')
-            ->everyMinute();
 
-//        $schedule->command('streams:refresh')
-//            ->everyFifteenMinutes();
+        $schedule->command('streams:refresh')
+            ->everyFifteenMinutes();
     }
 
     /**

@@ -19,8 +19,9 @@ Route::controller(LoginController::class)->middleware('guest')->group(function (
     Route::get('/login', 'index')->name('auth.login');
     Route::get('/login/twitch', 'twitch')->name('auth.twitch');
     Route::get('/login/twitch/redirect', 'twitchRedirect')->name('auth.twitch.redirect');
-    Route::post('/logout', 'logout')->name('auth.logout');
 });
+
+Route::post('/logout', [LoginController::class,'logout'])->middleware('auth:web')->name('auth.logout');
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/', [StreamController::class, 'index'])->name('home');

@@ -106,6 +106,10 @@ class StatRepository extends BaseRepository implements StatRepositoryInterface
 
         $intersect = $stream_tags->intersect($followed_stream_tags);
 
+        if ($intersect->isEmpty()) {
+            return [];
+        }
+
         $tags = (new StreamTagAction())->get($intersect);
 
         return $tags->pluck('localization_descriptions.en-us');
